@@ -62,7 +62,7 @@ class WeixinInterface:
         content_u = unicode(content,encoding='utf-8')
         #中文用这个
         if content_u[1] >= u'\u4e00' and content_u[1] <= u'\u9fa5':
-            content_8 = content_u.encode('utf8')
+            content_8 = content_u.encode('utf-8')
             reExpre = "\n.{2,100}"+ content_8 +".{0,200}\n"
         #英文用这个
         else:
