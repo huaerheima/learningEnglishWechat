@@ -58,8 +58,8 @@ class WeixinInterface:
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
 
-        #判断中英文
-        content_u = unicode(content,encoding='utf-8')
+        #判断中英文, 从微信过来的content为unicode的
+        content_u = content
         #中文用这个
         if content_u[1] >= u'\u4e00' and content_u[1] <= u'\u9fa5':
             content_8 = content_u.encode('utf-8')
