@@ -75,7 +75,7 @@ class WeixinInterface:
         for i in allApes:
             reply_content = reply_content+str(j)+". " + i + '\n'
             j+=1
-            if j>5:
+            if j>10:
                 break
 
         return self.render.reply_text(fromUser,toUser,int(time.time()),reply_content)
