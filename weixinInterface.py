@@ -50,7 +50,7 @@ class WeixinInterface:
         fromUser=xml.find("FromUserName").text
         toUser=xml.find("ToUserName").text
      
-        
+        #柯林斯的词典
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
         
