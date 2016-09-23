@@ -54,13 +54,21 @@ class WeixinInterface:
         content2 = ''
         for m in content1:
             content2 = content2 + m +' '
-        #柯林斯的词典
+        #柯林斯词典
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
-        
-        reExpre = "\n.{2,100} "+ content2+".{0,200}\n"
+
+        #判断中英文
+        content_u = unicode(content2,encoding='utf-8')
+        #中文用这个
+        if content_u[1] >= u'\u4e00' and content_u[1] <= u'\u9fa5':
+            reExpre = "\n.{2,100}"+ content2+".{0,200}\n"
+        #英文用这个
+        else:
+            reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
         allApes = re.findall(reExpre, readdata)
         
+        #回复查找的内容
         j = 1
         reply_content = ""
         for i in allApes:
