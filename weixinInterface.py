@@ -49,12 +49,16 @@ class WeixinInterface:
         msgType=xml.find("MsgType").text
         fromUser=xml.find("FromUserName").text
         toUser=xml.find("ToUserName").text
-     
+
+        content1 = content.split()
+        content2 = ''
+        for m in content1:
+            content2 = content2 + m +' '
         #柯林斯的词典
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
         
-        reExpre = "\n.{2,100}"+ content+".{0,200}\n"
+        reExpre = "\n.{2,100} "+ content2+".{0,200}\n"
         allApes = re.findall(reExpre, readdata)
         
         j = 1
