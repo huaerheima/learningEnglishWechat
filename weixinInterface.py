@@ -68,12 +68,8 @@ class WeixinInterface:
             j+=1
             if j>5:
                 break
-        #转义撇号
-        reg = re.compile("""'""")
-        reply_content2 = reg.sub("3", reply_content)
 
-                
-        return self.render.reply_text(fromUser,toUser,int(time.time()),reply_content2)
+        return self.render.reply_text(fromUser,toUser,int(time.time()),reply_content)
 
 
  
