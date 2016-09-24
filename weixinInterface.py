@@ -84,7 +84,7 @@ class WeixinInterface:
                 if j>10:
                     break
         else:
-            reply_content = 'Sorry, your search didn\'t match any dictionarys'
+            reply_content = 'Sorry, your search didn\'t match any dictionaries'
 
         return self.render.reply_text(fromUser,toUser,int(time.time()),reply_content)
 
