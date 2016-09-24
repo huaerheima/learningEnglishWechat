@@ -75,7 +75,7 @@ class WeixinInterface:
             allApes = re.findall(reExpre, readdata)
         
         #回复查找的内容
-        if len(allApes > 0)
+        if len(allApes) > 0
             j = 1
             reply_content = ""
             for i in allApes:
