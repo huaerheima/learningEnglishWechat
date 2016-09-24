@@ -81,10 +81,10 @@ class WeixinInterface:
             reply_content = ""
             for i in allApes:
                 if i[1:4] == strip_str:
-                    reply_content = reply_content+str(j)+".  " + i.strip('\n').strip(strip_str) + '\n\n'
+                    reply_content = reply_content+strip_str+"  " + i.strip('\n').strip(strip_str) + '\n\n'
                     j+=1
                 else:
-                    reply_content = reply_content + str(j) + ".  " + i.strip('\n') + '\n\n'
+                    reply_content = reply_content + strip_str + ".  " + i.strip('\n') + '\n\n'
                     j += 1
                 if j>6:
                     break
