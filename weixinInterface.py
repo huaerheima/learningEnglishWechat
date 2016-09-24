@@ -51,8 +51,8 @@ class WeixinInterface:
         toUser=xml.find("ToUserName").text
 
         #柯林斯英汉词典
-        f = open('En-Ch CollinsCOBUILD.txt','r')
-        readdata = f.read()
+        with open('En-Ch CollinsCOBUILD.txt','r') as f:
+            readdata = f.read()
 
         #微信发来的content为unicode
         content_u = content
