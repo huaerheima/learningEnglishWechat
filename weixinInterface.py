@@ -54,18 +54,18 @@ class WeixinInterface:
         content2 = ''
         for m in content1:
             content2 = content2 + m +' '
-        #柯林斯词典
+        #柯林斯英汉词典
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
 
-        #判断中英文, 从微信过来的content为unicode的
+        #微信发来的content为unicode
         content_u = content
-        #中文用这个
+        #判断中英文
         if content_u[0] >= u'\u4e00' and content_u[0] <= u'\u9fa5':
             content_8 = content_u.encode('utf-8')
             reExpre = "\n.{2,100}"+ content_8 +".{0,200}\n"
             allApes = re.findall(reExpre, readdata)
-        #大写的都包含
+        #有大写优先大写，包含小写
         elif content_u[0] >= 'A' and content_u[0] <= 'Z':
             reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
             reExpre1 = "\n.{2,100} " + content2.lower() + ".{0,200}\n"
