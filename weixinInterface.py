@@ -50,7 +50,6 @@ class WeixinInterface:
         fromUser=xml.find("FromUserName").text
         toUser=xml.find("ToUserName").text
 
-        content2 = ' '.join(content.split())
         #柯林斯英汉词典
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
@@ -63,13 +62,10 @@ class WeixinInterface:
             reExpre = "\n.{2,100}"+ content_8 +".{0,200}\n"
             allApes = re.findall(reExpre, readdata)
         #有大写优先大写，包含小写
-        elif content_u[0] >= 'A' and content_u[0] <= 'Z':
-            reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
-            reExpre1 = "\n.{2,100} " + content2.lower() + ".{0,200}\n"
-            allApes = re.findall(reExpre, readdata) + re.findall(reExpre1, readdata)
         else:
+            content2 = ' '.join(content.split())
             reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
-            allApes = re.findall(reExpre, readdata)
+            allApes = re.findall(reExpre, readdata, re.I)
         
         #回复查找的内容
         strip_str = u'■'.encode('utf-8')
