@@ -50,10 +50,7 @@ class WeixinInterface:
         fromUser=xml.find("FromUserName").text
         toUser=xml.find("ToUserName").text
 
-        content1 = content.split()
-        content2 = ''
-        for m in content1:
-            content2 = content2 + m +' '
+        content2 = ' '.join(content.split())
         #柯林斯英汉词典
         f = open('En-Ch CollinsCOBUILD.txt','r')
         readdata = f.read()
