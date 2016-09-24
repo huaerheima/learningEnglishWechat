@@ -75,13 +75,18 @@ class WeixinInterface:
             allApes = re.findall(reExpre, readdata)
         
         #回复查找的内容
+        strip_str = u'■'.encode('utf-8')
         if len(allApes) > 0:
             j = 1
             reply_content = ""
             for i in allApes:
-                reply_content = reply_content+str(j)+".  " + i.strip('\n') + '\n\n'
-                j+=1
-                if j>10:
+                if i[1:4] == strip_str:
+                    reply_content = reply_content+str(j)+".  " + i.strip('\n').strip(strip_str) + '\n\n'
+                    j+=1
+                else:
+                    reply_content = reply_content + str(j) + ".  " + i.strip('\n') + '\n\n'
+                    j += 1
+                if j>6:
                     break
         else:
             reply_content = 'Sorry, your search didn\'t match any dictionaries'
