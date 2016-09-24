@@ -75,13 +75,16 @@ class WeixinInterface:
             allApes = re.findall(reExpre, readdata)
         
         #回复查找的内容
-        j = 1
-        reply_content = ""
-        for i in allApes:
-            reply_content = reply_content+str(j)+". " + i + '\n'
-            j+=1
-            if j>10:
-                break
+        if len(allApes > 0)
+            j = 1
+            reply_content = ""
+            for i in allApes:
+                reply_content = reply_content+str(j)+". " + i + '\n'
+                j+=1
+                if j>10:
+                    break
+        else:
+            reply_content = 'Sorry, what you search not match any dictionarys'
 
         return self.render.reply_text(fromUser,toUser,int(time.time()),reply_content)
 
