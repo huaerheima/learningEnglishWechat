@@ -61,13 +61,18 @@ class WeixinInterface:
         #判断中英文, 从微信过来的content为unicode的
         content_u = content
         #中文用这个
-        if content_u[1] >= u'\u4e00' and content_u[1] <= u'\u9fa5':
+        if content_u[0] >= u'\u4e00' and content_u[0] <= u'\u9fa5':
             content_8 = content_u.encode('utf-8')
             reExpre = "\n.{2,100}"+ content_8 +".{0,200}\n"
-        #英文用这个
+            allApes = re.findall(reExpre, readdata)
+        #大写的都包含
+        elif content_u[0] >= 'A' and content_u[0] <= 'Z':
+            reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
+            reExpre1 = "\n.{2,100} " + content2.lower() + ".{0,200}\n"
+            allApes = re.findall(reExpre, readdata) + re.findall(reExpre1, readdata)
         else:
             reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
-        allApes = re.findall(reExpre, readdata)
+            allApes = re.findall(reExpre, readdata)
         
         #回复查找的内容
         j = 1
