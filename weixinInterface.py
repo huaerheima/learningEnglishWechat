@@ -61,26 +61,16 @@ class WeixinInterface:
             content_8 = content_u.encode('utf-8')
             reExpre = "\n.{2,100}"+ content_8 +".{0,200}\n"
             allApes = re.findall(reExpre, readdata)
-        #有大写优先大写，包含小写
         else:
             content2 = ' '.join(content.split())
             reExpre = "\n.{2,100} " + content2 + ".{0,200}\n"
             allApes = re.findall(reExpre, readdata, re.I)
         
         #回复查找的内容
-        strip_str = u'■'.encode('utf-8')
-        if len(allApes) > 0:
-            j = 1
-            reply_content = ""
-            for i in allApes:
-                if i[1:4] == strip_str:
-                    reply_content = reply_content+strip_str+"  " + i.strip('\n').strip(strip_str) + '\n\n'
-                    j+=1
-                else:
-                    reply_content = reply_content + strip_str + "  " + i.strip('\n') + '\n\n'
-                    j += 1
-                if j>6:
-                    break
+        if allApes:
+            strip_str = u'■'.encode('utf-8')
+            replies = [i.strip('\n').strip(strip_str) for i in allApes[:6]]
+            reply_content = "\n\n".join(replies)
         else:
             reply_content = 'Sorry, your search didn\'t match any dictionaries'
 
